@@ -68,7 +68,7 @@ $(document).ready(function() {
     },
     grep: function(proj) {
       var header = '<tr><th style=\'width:70px\'>TAG</th><th style=\'width:80px\'>COMPANY</th><th style=\'width:70px\'>WHEN</th><th>DESCRIPTION</th></tr>'; 
-      switch(topic){
+      switch(proj){
         case project_desc[0].title:
           var table = table_style + header;
           table += '<tr><td style=\'width:70px\'>'+project_desc[0].title+'</td><td style=\'width:80px\'>'+project_desc[0].where+'</td><td style=\'width:70px\'>'+project_desc[0].when+'</td><td>'+project_desc[0].desc+'</tr></table>';
