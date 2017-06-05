@@ -3,16 +3,8 @@ var external_links = [
   {title:'github',link:'https://github.com/keldryc'},
   {title:'bitbucket',link:'https://bitbucket.org/kellynn'},
   {title:'resume',link:'docs/PETERSON_RESUME.pdf'}, 
-  {title:'HOME/SPAC',link:''}
+  {title:'last.fm',link:'https://last.fm/user/kamiepatuck'},
 ];
-
-var project_desc = [
-  {title:'PROF/current',where:'',when:'current',desc:'Network software in C++'},
-  {title:'PROF/COG',where:'Cornerstone Operations Group',when:'2014',desc:'Web App development primarily in ColdFusion, JavaScript, SQL'},
-  {title:'HOME/SPAC',where:'Family art project :]',when:'Oct 2014',desc:'Web dev in Python using Flask, and Sqlite.'},
-  {title:'ACAD',where:'University of Delaware',when:'2011-2015',desc:'GitHub and BitBucket host school assignments for Compiler Design and Senior Design.'}
-]
-
 
 var table_style = "<table style='font-family: FreeMono, monospace; color: #aaa; font-size: 12px; line-height: 14px'>"
 
@@ -34,7 +26,6 @@ $(document).ready(function() {
         <tr><td>ping</td><td>pong</td></tr>\
         <tr><td>ls</td><td>Displays external links'</td></tr>\
         <tr><td>cd</td><td>(use --help) Change directory (open links in new tab)</td></tr>\
-        <tr><td>grep</td><td>(use --help) View technical info on a project</td></tr>\
         </table>",{'raw':'true'});
     },
     ls: function() {
@@ -66,44 +57,6 @@ $(document).ready(function() {
         this.exec("ls");
       }
     },
-    grep: function(proj) {
-      var header = '<tr><th style=\'width:70px\'>TAG</th><th style=\'width:80px\'>COMPANY</th><th style=\'width:70px\'>WHEN</th><th>DESCRIPTION</th></tr>'; 
-      switch(proj){
-        case project_desc[0].title:
-          var table = table_style + header;
-          table += '<tr><td style=\'width:70px\'>'+project_desc[0].title+'</td><td style=\'width:80px\'>'+project_desc[0].where+'</td><td style=\'width:70px\'>'+project_desc[0].when+'</td><td>'+project_desc[0].desc+'</tr></table>';
-          this.echo(table,{'raw':'true'});
-          break;
-        case project_desc[1].title:
-          var table = table_style + header;
-          table += '<tr><td style=\'width:70px\'>'+project_desc[1].title+'</td><td style=\'width:80px\'>'+project_desc[1].where+'</td><td style=\'width:70px\'>'+project_desc[1].when+'</td><td>'+project_desc[1].desc+'</tr></table>';
-          this.echo(table,{'raw':'true'});
-          break;
-        case project_desc[2].title:
-          var table = table_style + header;
-          table += '<tr><td style=\'width:70px\'>'+project_desc[2].title+'</td><td style=\'width:80px\'>'+project_desc[2].where+'</td><td style=\'width:70px\'>'+project_desc[2].when+'</td><td>'+project_desc[2].desc+'</tr></table>';
-          this.echo(table,{'raw':'true'});
-          break;
-        case project_desc[3].title:
-          var table = table_style + header;
-          table += '<tr><td style=\'width:70px\'>'+project_desc[3].title+'</td><td style=\'width:80px\'>'+project_desc[3].where+'</td><td style=\'width:70px\'>'+project_desc[3].when+'</td><td>'+project_desc[3].desc+'</tr></table>';
-          this.echo(table,{'raw':'true'});
-          break;
-        case 'all':
-          var table = table_style + header;
-          for (i=0; i < project_desc.length; i++){
-            table += '<tr><td>'+project_desc[i].title+'</td><td>'+project_desc[i].where+'</td><td>'+project_desc[i].when+'</td><td>'+project_desc[i].desc+'</tr>';
-          }
-          this.echo(table+'</table>',{'raw':'true'});
-          break;
-        default:
-          this.echo('view project details with \'cat [PROJECT]\' of a project below\n');
-          for(i=0; i < project_desc.length; i++){
-            this.echo(project_desc[i].title);
-          }
-          this.echo('\n');
-      }
-    }
   },{ 
     prompt:'> ', 
     name:'shell', 
